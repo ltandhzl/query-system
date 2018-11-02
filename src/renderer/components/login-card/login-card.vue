@@ -1,7 +1,7 @@
 <template>
   <div class="login-card">
     <div class="bg">
-      <img src="../../assets/bg.jpg">
+      <img src="../../assets/img/bg.jpg">
       <div class="return">
         <span @click="_back">返回</span>
       </div>
@@ -46,8 +46,7 @@
     margin: 0 auto;
   }
   .login-card img{
-    background-repeat: no-repeat;
-    background-position: center center;
+    background: center center  no-repeat;
     width: 100%;
     height: 100%;
   }

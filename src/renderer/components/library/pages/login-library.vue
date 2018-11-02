@@ -1,12 +1,12 @@
 <template>
-  <div class="login-class">
+  <div class="login-card">
     <div class="bg">
-      <img src="../../assets/img/bg.jpg">
+      <img src="../../../assets/img/bg.jpg">
       <div class="return">
         <span @click="_back">返回</span>
       </div>
       <div class="content">
-        <div class="title"><span>课程表服务</span></div>
+        <div class="title"><span>图书馆服务</span></div>
         <div class="table">
           <label class="user">
             <span>用户:</span>
@@ -17,7 +17,7 @@
             <input type="password" maxlength="6">
           </label>
           <div class="search">
-            <router-link to="/class" tag="button">查询</router-link>
+            <router-link to="/card" tag="button">登录</router-link>
           </div>
         </div>
       </div>
@@ -26,32 +26,29 @@
 </template>
 
 <script>
-  export default {
-    name: 'login-class',
-    methods: {
-      _back() {
-        this.$router.go(-1)
-      }
+export default {
+  name: 'login-library',
+  methods: {
+    _back() {
+      this.$router.go(-1)
     }
   }
+}
 </script>
 
 <style>
-  @import '../../assets/font/font.css';
-
-  .login-class .bg{
+  .login-card .bg{
     width: 100%;
     height: 100%;
     position: relative;
     margin: 0 auto;
   }
-  .login-class img{
-    background-repeat: no-repeat;
-    background-position: center center;
+  .login-card img{
+    background:center center no-repeat;
     width: 100%;
     height: 100%;
   }
-  .login-class .return{
+  .login-card .return{
     width: 115px;
     height: 55px;
     background: linear-gradient(to right, rgba(0,34,52,0.4), rgba(54,191,255,1));
@@ -63,7 +60,7 @@
     text-align: center;
     border-radius: 15px;
   }
-  .login-class span{
+  .login-card span{
     text-decoration: none;
     color: white;
     font-size: 40px;
@@ -71,7 +68,7 @@
     -webkit-text-fill-color: #fff;
     -webkit-text-stroke: 2px #fff;
   }
-  .login-class .content{
+  .login-card .content{
     width: 589px;
     height: 798px;
     background: rgba(9,59,85,0.33);
@@ -84,17 +81,17 @@
     border-radius: 10px;
     box-shadow: 0px 0px 14px #fff;
   }
-  .login-class .title{
+  .login-card .title{
     text-align: center;
     margin-top: 110px;
   }
-  .login-class .title span{
+  .login-card .title span{
     font-size: 80px;
   }
-  .login-class .table{
+  .login-card .table{
     text-align: center;
   }
-  .login-class .user input{
+  .login-card .user input{
     width: 273px;
     height: 40px;
     border-radius: 15px;
@@ -102,14 +99,14 @@
     padding: 0;
     outline: none;
   }
-  .login-class .pass input{
+  .login-card .pass input{
     width: 273px;
     height: 40px;
     border-radius: 15px;
     margin: 75px 0 99px 10px;
     outline: none;
   }
-  .login-class .search{
+  .login-card .search{
     margin: 0 auto;
     border-radius: 15px;
     height: 70px;
