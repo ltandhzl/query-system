@@ -32,12 +32,6 @@
               <div class="right-li">
                 <span>{{index+1}}.</span>
                 <span class="book-name"> {{item.tsmc}}</span>
-                <span class="book-volum">A122/2</span>
-                <div class="book-others">
-                  <span >恩格斯【善】</span>
-                  <span>人名出版社</span>
-                  <span>2016</span>
-                </div>
               </div>
               </li>
             </ul>
@@ -48,11 +42,11 @@
           <div class="current">
             <div class="right-header border-bottom" >
               <span class="header-signal"></span>
-              <span class="header-content">我的课表</span>
+              <span class="header-content">当前借阅</span>
             </div>
             <div class="current-title border-bottom">
               <span class="title-num">条码号</span>
-              <span class="title-name">题名</span>
+              <span class="title-name">书名</span>
               <span class="title-or">责任者</span>
               <span class="rentd">借阅日期</span>
               <span class="backd">应还日期</span>
@@ -61,7 +55,7 @@
               <ul>
                 <li class="border-bottom" v-for="item of current">
                   <span class="content-num">{{item.tstxm}}</span>
-                  <span class="content-name">{{item.tm}}</span>
+                  <span class="content-name">《{{item.tm}}》</span>
                   <span class="content-or">{{item.dyzz}}</span>
                   <span class="content-rentd">{{item.rdrq}}</span>
                   <span class="content-backd">{{item.rdrq}}</span>
@@ -135,7 +129,7 @@ export default {
     position:relative;
     width: 1280px;
     height: 100%;
-    font-family: 'SimHei';
+    font-family: 'SIMHEI';
   }
   .header{
     position: relative;
@@ -146,7 +140,6 @@ export default {
   .header-name{
     float: left;
     font-size:50px;
-    font-family: JLH;
     color: #ffffff;
   }
   .header-input{
@@ -200,7 +193,7 @@ export default {
     background: #fff;
     color: #565656;
     font-weight: bold;
-    margin-left: 5px;
+    margin-left: 4px;
     margin-top: 2px;
   }
    .left-current{
@@ -294,13 +287,6 @@ export default {
     font-size: 16px;
     color:rgb(24,109,146);
   }
-  .book-volum{
-    font-size: 12px;
-  }
-  .book-others{
-    margin-top: -58px;
-    font-size: 12px;
-  }
   .current-title{
     height: 33px;
     line-height: 33px;
@@ -327,18 +313,18 @@ export default {
     line-height: 55px;
   }
   .content-num{
-    margin-left: 25px;
+    margin-left: 30px;
   }
   .content-name{
-    margin-left: 130px;
+    margin-left: 143px;
   }
   .content-or{
-    margin-left: 130px;
+    margin-left: 112px;
   }
   .content-rentd{
-    margin-left: 120px;
+    margin-left: 85px;
   }
   .content-backd{
-    margin-left: 120px;
+    margin-left: 130px;
   }
 </style>

@@ -17,7 +17,7 @@
             <input type="password" maxlength="6">
           </label>
           <div class="search">
-            <router-link to="/card" tag="button">登录</router-link>
+            <router-link to="/login-suc" tag="button">登录</router-link>
           </div>
         </div>
       </div>

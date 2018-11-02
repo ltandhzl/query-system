@@ -6,6 +6,7 @@ import router from './router/index'
 import '../renderer/assets/css/reset.css'
 import '../renderer/assets/font/font.css'
 import '../renderer/assets/css/border.css'
+import '../renderer/assets/font/fonthei.css'
 import axios from 'axios'
 
 Vue.config.productionTip = false
