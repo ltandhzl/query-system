@@ -1,7 +1,7 @@
 <template>
   <div class="login-class">
     <div class="bg">
-      <img src="../../assets/bg.jpg">
+      <img src="../../assets/img/bg.jpg">
       <div class="return">
         <span @click="_back">返回</span>
       </div>
