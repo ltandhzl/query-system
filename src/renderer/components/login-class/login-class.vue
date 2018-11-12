@@ -8,16 +8,16 @@
       <div class="content">
         <div class="title"><span>课程表服务</span></div>
         <div class="table">
-          <label class="user">
+          <div class="user">
             <span>用户:</span>
-            <input type="type">
-          </label><br>
-          <label class="pass">
+            <input type="type" ref="user" oninput="value=value.replace(/[^\d]/g,'')" value="">
+          </div>
+          <div class="pass">
             <span>密码:</span>
-            <input type="password" maxlength="6">
-          </label>
+            <input type="password" ref="pass" value="">
+          </div>
           <div class="search">
-            <router-link to="/class" tag="button">查询</router-link>
+            <button  @click='_check'>查询</button>
           </div>
         </div>
       </div>
@@ -31,6 +31,35 @@
     methods: {
       _back() {
         this.$router.go(-1)
+      },
+      _check() {
+        //获取用户输入的学号
+        this.user = this.$refs.user.value;
+        this.pass = this.$refs.pass.value;
+        let _this = this;
+        if (this.user==="" || this.pass==="") {
+          alert("请输入账号和密码");
+        } else {
+          $.ajax({
+          type: "POST",
+          url:"http://ax2.free.idcfengye.com/subject/login.action",
+          data: {XGH: this.user, password: this.pass},
+          dataType: "jsonp",
+          async: true,
+          jsonp: "jsonpCallback",
+          success: function(res) {
+            console.log(res);
+            if (res.status === 200){
+              _this.$router.push({path:'/class', query:{xgh: _this.$refs.user.value, XM: res.data.xm}});
+            } else {
+              alert(res.msg)
+            }
+          },
+          error: function() {
+            console.log("获取失败");
+          }
+        });
+        }
       }
     }
   }
@@ -86,7 +115,7 @@
   }
   .login-class .title{
     text-align: center;
-    margin-top: 110px;
+    margin: 127px 0 113px 0;
   }
   .login-class .title span{
     font-size: 80px;
@@ -94,20 +123,33 @@
   .login-class .table{
     text-align: center;
   }
+  
   .login-class .user input{
     width: 273px;
     height: 40px;
     border-radius: 15px;
-    margin: 114px 0 0 10px;
-    padding: 0;
     outline: none;
+    margin-left: 20px;
+    font-size: 28px;
+    color: #186d92;
+    padding-left: 13px;
+    line-height: 40px;
+    margin-top:-13px;
+  }
+  .login-class .pass{
+    margin: 75px 0 118px 0px;
   }
   .login-class .pass input{
     width: 273px;
     height: 40px;
     border-radius: 15px;
-    margin: 75px 0 99px 10px;
+    margin-left: 20px;
     outline: none;
+    font-size: 28px;
+    color: #186d92;
+    padding-left: 13px;
+    line-height: 40px;
+    margin-top:-13px;
   }
   .login-class .search{
     margin: 0 auto;
