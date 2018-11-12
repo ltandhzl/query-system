@@ -9,7 +9,9 @@ import '../renderer/assets/css/reset.css'
 import '../renderer/assets/font/font.css'
 import '../renderer/assets/css/border.css'
 import '../renderer/assets/font/fonthei.css'
+import global_ from'../renderer/assets/js/global'
 Vue.config.productionTip = false
+Vue.prototype.GLOBAL = global_;
 
 Vue.prototype.$ELEMENT = { size: 'small', zIndex: 3000 };
 Vue.use(ElementUI);

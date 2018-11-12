@@ -77,7 +77,7 @@ export default {
     let _this = this;
     $.ajax({
       type: "POST",
-      url: "http://axss.free.idcfengye.com/select/selectYe.action",
+      url: _this.GLOBAL.URL+"/select/selectYe.action",
       data: { xgh: this.$route.query.xgh },
       dataType: "jsonp",
       async: true,
@@ -94,7 +94,7 @@ export default {
     if ((_this.first = 1)) {
       $.ajax({
         type: "POST",
-        url: "http://axss.free.idcfengye.com/select/selectRecord.action",
+        url: _this.GLOBAL.URL+"/select/selectRecord.action",
         data: { xgh: this.$route.query.xgh},
         dataType: "jsonp",
         async: true,
@@ -111,9 +111,6 @@ export default {
       });
     }
   },
-  // created() {
-  //   this.handleUserList();
-  // },
   methods: {
     _back() {
       this.$router.go(-1);
@@ -147,7 +144,7 @@ export default {
         console.log(this.mintime);
         $.ajax({
           type: "GET",
-          url: "http://axss.free.idcfengye.com/select/selectRecoredBytime.action",
+          url: _this.GLOBAL.URL+"/select/selectRecoredBytime.action",
           data: { xgh: this.$route.query.xgh, mintime: this.mintime, maxtime: this.maxtime},
           dataType: "jsonp",
           async: true,
@@ -160,13 +157,6 @@ export default {
             console.log("获取失败");
           }
         });
-        // axios.get("/static/mock/card/card.json").then(res => {
-        //   res.data.data[0].forEach(function(item) {
-        //     if (item.jysj <= that.maxtime + 1 && item.jysj >= that.mintime) {
-        //       that.newlist.push(item);
-        //     }
-        //   });
-        // });
       }
     }
   }

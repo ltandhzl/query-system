@@ -427,7 +427,7 @@ export default {
     if (_this.first = 1) {
       $.ajax({
         type: "POST",
-        url: "http://ax2.free.idcfengye.com/subject/findSubjectJsonP.action",
+        url: _this.GLOBAL.URL+"/subject/findSubjectJsonP.action",
         data: { XH: this.$route.query.xgh },
         dataType: "jsonp",
         async: true,
@@ -450,7 +450,7 @@ export default {
     }
     $.ajax({
       type: "POST",
-      url: "http://ax2.free.idcfengye.com/subject/findXNJonP.action",
+      url: _this.GLOBAL.URL+"/subject/findXNJonP.action",
       dataType: "jsonp",
       async: true,
       jsonp: "jsonpCallback",
@@ -479,7 +479,7 @@ export default {
       this.item = [];
       $.ajax({
         type: "POST",
-        url: "http://ax2.free.idcfengye.com/subject/findSubjectJsonP.action",
+        url: _this.GLOBAL.URL+"/subject/findSubjectJsonP.action",
         data: { XH: this.$route.query.xgh, XQDM: this.time },
         dataType: "jsonp",
         async: true,

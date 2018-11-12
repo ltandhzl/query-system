@@ -42,14 +42,13 @@ export default {
       } else {
         $.ajax({
           type: "POST",
-          url:"http://axss.free.idcfengye.com/select/checklogin.action",
+          url:_this.GLOBAL.URL+"/select/checklogin.action",
           data: {xgh: this.user, password: this.pass},
           dataType: "jsonp",
           async: true,
           jsonp: "callback",
           success: function(res) {
             if (res.data.code === 200){
-              //console.log(res.data.data.xm);
               _this.$router.push({path:'/card', query:{xgh: _this.$refs.user.value, XM: res.data.data.xm}});
             } else {
               alert(res.data.msg)
