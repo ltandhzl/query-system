@@ -42,13 +42,13 @@
         } else {
           $.ajax({
           type: "POST",
-          url:"http://axss.free.idcfengye.com/library/login",
+          url:_this.GLOBAL.URL + "/library/login",
           data: {SFRZH: this.user, SFID: this.pass},
           dataType: "jsonp",
           async: true,
           jsonp: "callback",
           success: function(res) {
-            console.log(res);
+            console.log(res.code);
             // if (res.status === 200){
             //   _this.$router.push({path:'/class', query:{xgh: _this.$refs.user.value, XM: res.data.xm}});
             // } else {

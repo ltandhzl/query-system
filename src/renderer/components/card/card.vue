@@ -1,55 +1,60 @@
 <template>
   <div class="card">
-    <div class="bg">
-      <span class="title">学生卡服务</span>
+    <div v-if="newlist.length===0">
+      <img src="../../assets/loading.gif" class="loading">
     </div>
-    <div class="main">
-      <div class="center">
-        <div class="menu-card">
-          <div class="menu">
-            <img class="avator" src="../../assets/avator.png">
-            <span class="name">{{this.$route.query.XM}}</span>
-            <span class="id">卡号：{{this.$route.query.xgh}}</span>
-            <span class="money">余额：<i>{{data.ye}}</i></span>
-          </div>
-          <div class="detailed">
-            <span>账单明细</span>
-          </div>
-        </div>
-        <div class="wapper-card">
-          <h1>我的账单</h1>
-          <div class="search-card">
-            <form>
-              <span class="search">查询年月:</span>
-              <input type="date" class="search-input" ref="mintime" value=""><span class="searchto">至</span>
-              <input type="date" class="search-input" ref="maxtime" value="">
-              <button class="btn-card" @click="_btnCard" type="button">查询</button>
-            </form>
-          </div>
-          <div style="margin: 0 45px;" class="table" v-if="newlist.length!==0">
-            <el-table :data="this.newlist.slice((currentPage-1)*pagesize,currentPage*pagesize)">
-              <el-table-column type="index" label="序号" width="100"></el-table-column>
-              <el-table-column label="消费类型" prop="jylx"></el-table-column>
-              <el-table-column label="时间" prop="jysj"></el-table-column>
-              <el-table-column label="地点" prop="shmc"></el-table-column>
-              <el-table-column label="金额" prop="jye"></el-table-column>
-            </el-table>
-            <el-pagination background layout="prev, pager, next" :total="newlist.length"@size-change="handleSizeChange" @current-change="handleCurrentChange"></el-pagination>
-          </div>
-          <div style="margin: 0 45px;" class="table" v-else>
-            <el-table :data="this.userList.slice((currentPage-1)*pagesize,currentPage*pagesize)">
-              <el-table-column type="index" label="序号" width="100"></el-table-column>
-              <el-table-column label="消费类型" prop="jylx"></el-table-column>
-              <el-table-column label="时间" prop="jysj"></el-table-column>
-              <el-table-column label="地点" prop="shmc"></el-table-column>
-              <el-table-column label="金额" prop="jye"></el-table-column>
-            </el-table>
-            <el-pagination background layout="prev, pager, next" :total="userList.length"@size-change="handleSizeChange" @current-change="handleCurrentChange"></el-pagination>
-          </div>
-        </div>
+    <div v-else>
+      <div class="bg">
+        <span class="title">学生卡服务</span>
       </div>
-      <div class="bottom">
-        <span class="return" @click="_back">返回</span>
+      <div class="main">
+        <div class="center">
+          <div class="menu-card">
+            <div class="menu">
+              <img class="avator" src="../../assets/avator.png">
+              <span class="name">{{this.$route.query.XM}}</span>
+              <span class="id">卡号：{{this.$route.query.xgh}}</span>
+              <span class="money">余额：<i>{{data.ye}}</i></span>
+            </div>
+            <div class="detailed">
+              <span>账单明细</span>
+            </div>
+          </div>
+          <div class="wapper-card">
+            <h1>我的账单</h1>
+            <div class="search-card">
+              <form>
+                <span class="search">查询年月:</span>
+                <input type="date" class="search-input" ref="mintime" value=""><span class="searchto">至</span>
+                <input type="date" class="search-input" ref="maxtime" value="">
+                <button class="btn-card" @click="_btnCard" type="button">查询</button>
+              </form>
+            </div>
+            <div style="margin: 0 45px;" class="table" v-if="newlist.length!==0">
+              <el-table :data="this.newlist.slice((currentPage-1)*pagesize,currentPage*pagesize)">
+                <el-table-column type="index" label="序号" width="100"></el-table-column>
+                <el-table-column label="消费类型" prop="jylx"></el-table-column>
+                <el-table-column label="时间" prop="jysj"></el-table-column>
+                <el-table-column label="地点" prop="shmc"></el-table-column>
+                <el-table-column label="金额" prop="jye"></el-table-column>
+              </el-table>
+              <el-pagination background layout="prev, pager, next" :total="newlist.length"@size-change="handleSizeChange" @current-change="handleCurrentChange"></el-pagination>
+            </div>
+            <div style="margin: 0 45px;" class="table" v-else>
+              <el-table :data="this.userList.slice((currentPage-1)*pagesize,currentPage*pagesize)">
+                <el-table-column type="index" label="序号" width="100"></el-table-column>
+                <el-table-column label="消费类型" prop="jylx"></el-table-column>
+                <el-table-column label="时间" prop="jysj"></el-table-column>
+                <el-table-column label="地点" prop="shmc"></el-table-column>
+                <el-table-column label="金额" prop="jye"></el-table-column>
+              </el-table>
+              <el-pagination background layout="prev, pager, next" :total="userList.length"@size-change="handleSizeChange" @current-change="handleCurrentChange"></el-pagination>
+            </div>
+          </div>
+        </div>
+        <div class="bottom">
+          <span class="return" @click="_back">返回</span>
+        </div>
       </div>
     </div>
   </div>
@@ -151,7 +156,6 @@ export default {
           jsonp: "callback",
           success: function(res) {
             _this.newlist = res.data;
-            console.log(_this.newlist);
           },
           error: function() {
             console.log("获取失败");
