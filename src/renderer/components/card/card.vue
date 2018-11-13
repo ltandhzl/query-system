@@ -94,8 +94,6 @@ export default {
         console.log("获取失败");
       }
     });
-
-    console.log("before之前" + _this.first);
     if ((_this.first = 1)) {
       $.ajax({
         type: "POST",
@@ -106,9 +104,7 @@ export default {
         jsonp: "callback",
         success: function(res) {
           _this.newlist = res.data;
-          console.log(_this.newlist);
           _this.first++;
-          console.log("before之后" + _this.first);
         },
         error: function() {
           console.log("获取失败");
@@ -127,7 +123,6 @@ export default {
     },
     handleCurrentChange(currentPage) {
       this.currentPage = currentPage;
-      console.log(this.currentPage); //点击第几页
     },
     _btnCard() {
       // 获取到用户输入的起始时间
@@ -146,7 +141,6 @@ export default {
       ) {
         alert("时间输入有误");
       } else {
-        console.log(this.mintime);
         $.ajax({
           type: "GET",
           url: _this.GLOBAL.URL+"/select/selectRecoredBytime.action",
