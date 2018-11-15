@@ -57,6 +57,7 @@
               <span class="title-or">续借次数</span>
               <span class="rentd">续借日期</span>
               <span class="backd">应还日期</span>
+              <div id="current-none" class="current-none"></div>
               <div class="current-content" ref="rightWrapper">
                 <ul>
                   <li class="content-li border-bottom" v-for="item of listcurrent">
@@ -117,7 +118,8 @@
             if (res.code === 200){
               _this.listcurrent=res.data
             } else {
-              alert(res.msg)
+              let currentnone=document.getElementById('current-none')
+               currentnone.innerText=res.msg
             }
           },
           error: function() {
@@ -134,12 +136,6 @@
         $.ajax({
           type: "GET",
           url:`http://222.195.120.110:8080/select/library/historyborrow/${this.user}`,
-          beforeSend:function(res){
-            $('#loading').show()
-          },
-          compete:function(){
-            $('#loading').hide()
-          },
           dataType: "jsonp",
           async: true,
           jsonp: "callback",
@@ -147,7 +143,8 @@
             if (res.code === 200){
               _this.listlocal=res.data
             } else {
-              alert(res.msg)
+              // let currentnone=document.getElementById('current-none')
+              // currentnone.innerText=res.msg
             }
           },
           error: function() {
@@ -310,6 +307,13 @@
     font-size: 16px;
     color: rgb(161,161,156);
     left:28px
+  }
+  .current-none{
+    position: relative;
+    font-size: 20px;
+    color: red;
+    width: 100%;
+    text-align: center;
   }
   .content-li{
     width: 100%;

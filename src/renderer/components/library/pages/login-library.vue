@@ -6,7 +6,7 @@
         <span @click="_back">返回</span>
       </div>
       <div class="content">
-        <div class="title"><span>图书馆表服务</span></div>
+        <div class="title"><span>图书馆服务</span></div>
         <div class="table">
           <div class="user">
             <span>用户:</span>
@@ -17,11 +17,12 @@
             <input type="password" ref="pass" value="">
           </div>
           <div class="search">
-            <button  @click='_check'>查询</button>
+            <button  @click='_check' >登录</button>
           </div>
         </div>
       </div>
     </div>
+    <div id="myspin"></div>
   </div>
 </template>
 
@@ -41,25 +42,23 @@
           alert("请输入账号和密码");
         } else {
           $.ajax({
-          type: "POST",
-          url:_this.GLOBAL.URL + "/library/login",
-          data: {SFRZH: this.user, SFID: this.pass},
-          dataType: "jsonp",
-          async: true,
-          jsonp: "callback",
-          success: function(res) {
-            console.log(res.code);
-            // if (res.status === 200){
-            //   _this.$router.push({path:'/class', query:{xgh: _this.$refs.user.value, XM: res.data.xm}});
-            // } else {
-            //   alert(res.msg)
-            // _this.$router.push({path: '/LoginSuc', query:{Name: res.data.data.dzxm}});
-            // }
-          },
-          error: function() {
-            console.log("获取失败");
-          }
-        });
+            type: "GET",
+            url:"http://222.195.120.110:8080/select/library/login",
+            data: {SFRZH: _this.user, SFID: _this.pass},
+            dataType: "jsonp",
+            async: true,
+            jsonp: "callback",
+            success: function(res) {
+              if (res.code === 200){
+                _this.$router.push({path:`/login-suc`,query:{DZXM:res.data.dzxm,SFRZH:res.data.sfrzh}});
+              }else{
+                alert('用户名或密码不正确')
+              }
+            },
+            error: function() {
+              console.log("获取失败");
+            }
+          });
         }
       }
     }
@@ -122,7 +121,7 @@
   .login-class .table{
     text-align: center;
   }
-  
+
   .login-class .user input{
     width: 273px;
     height: 40px;
@@ -167,4 +166,20 @@
     -webkit-text-stroke: 2px rgb(4,40,57);
     outline: none;
   }
+  #loading{
+    position:absolute;
+    margin: auto auto;
+  }
+  .loading-block{
+    position: fixed;
+    top: auto;
+    left: auto;
+    width: 300px;
+    height: 300px;
+    z-index: 9999;
+    margin: auto;
+    /*display: none;*/
+    background: transparent;
+  }
 </style>
+

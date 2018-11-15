@@ -268,7 +268,7 @@
   .category-view-left{
     margin-left:30px;
     margin-top:17px;
-    width:327px;
+    width:300px;
     height:800px;
     border-right:1px solid #ccc;
 
@@ -283,13 +283,13 @@
     font-size: 16px;
   }
   .category-view-ul{
-    margin-top:18px;
+    margin-top: 18px;
   }
   .category-view-li{
     margin-bottom:16px;
     font-family: SIMHEI;
     color: #a1a19c;
-    font-size: 16px;
+    font-size: 14px;
   }
   .category-view-right{
     flex: 1;
@@ -297,7 +297,8 @@
     position: relative;
   }
   .category-view-right-loading{
-     margin-left: 100px;
+    width:400px;
+    height: 300px;
   }
   .category-view-table{
     width: 100%;

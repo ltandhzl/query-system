@@ -189,7 +189,7 @@
              let isbn=_this.bookContents.isbn;
              $.ajax({
                type: "GET",
-               url:`${http}/library/introduce/${isbn}`,
+               url:`${_this.GLOBAL.URL}/library/introduce/${isbn}`,
                dataType: "jsonp",
                async: true,
                jsonp: "callback",
