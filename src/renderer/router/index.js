@@ -5,7 +5,6 @@ import Index from '../components/index/index'
 import LoginCard from '../components/login-card/login-card'
 import LoginClass from '../components/login-class/login-class'
 import Class from '../components/class/class'
-import Library from '../components/library/Library'
 import LoginLibrary from '../components/library/pages/login-library'
 import LoginSuc from '../components/library/LoginSuc'
 import LibraryIndex from '../components/library/components/library-index'
@@ -43,11 +42,6 @@ export default new Router({
       path: '/class',
       name: 'Class',
       component: Class
-    },
-    {
-      path: '/library',
-      name: 'Library',
-      component: Library
     },
     {
       path: '/login-library',
