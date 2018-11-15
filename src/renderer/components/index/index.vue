@@ -1,24 +1,20 @@
 <template>
   <div>
-    <div class="bg">
-      <img src="../../assets/img/bg.jpg">
-    </div>
     <div class="index">
+      <img src="../../assets/img/bg.jpg" class="index-bg">
       <div class="index-header">
         巢湖学院查询系统
       </div>
-      <div class="center">
         <div class="index-center">
           <ul>
             <li><router-link :to="{path:'/login-card'}" class="index-content">校园卡</router-link></li>
             <li><router-link :to="{path:'/login-class'}" class="index-content">课程表</router-link></li>
             <li><router-link :to="{path:'/library-index'}" class="index-content">图书馆</router-link></li>
-            <li><router-link :to="{path:'/login-card'}" class="index-content">新期待</router-link></li>
+            <li><router-link :to="{path:'/'}" class="index-content">请期待</router-link></li>
           </ul>
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -29,55 +25,55 @@
 
 <style>
   @import '../../assets/font/font.css';
-   .bg{
+
+  .index{
     width: 100%;
     height: 100%;
-    position: absolute;
-    overflow:hidden;
+    font-family: 'JLH';
   }
-  .bg img{
-    background: center center no-repeat;
+
+  .index-bg{
+    position: absolute;
     width: 100%;
-    height: 100%;
+    height:100%;
+    background-size:100% 100%;
+    background-repeat: no-repeat;
   }
   .index-header{
     position: absolute;
-    font-family: 'JLH';
-    font-size: 166px;
+    width: 100%;
+    height: 120px;
+    line-height: 120px;
+    font-size:88px;
     color: #fff;
-    margin-top:83px;
-    margin-left:200px;
+    top: 43px;
+    text-align: center;
   }
-  .index .center{
+  .index-center{
     position:absolute;
     width: 100%;
-    height:100%;
+    height:788px;
     background: url("../../assets/img/border-shade.png") no-repeat;
-    background-size:100% 100%;
-    margin-top: 173px;
+    background-size:100% 788px;
+    margin-top: 182px;
   }
-  .index ul{
-    margin-left: 144px;
+  .index-center ul{
+    position: relative;
+    display: flex;
+    padding:250px 150px;
   }
   .index-center ul li{
-    position: relative;
-    display: inline-block;
-    float: left;
+    flex: 1;
     width:218px;
     height:224px;
     background-size:218px 224px;
     background: url("../../assets/img/circu.png") no-repeat;
-    margin-left: 135px;
-    margin-top:400px;
   }
   .index-center ul li a{
-    position: relative;
-    display: block;
-    color: rgba(28,100,149,1);
+    color: rgb(28,100,149);
     -webkit-text-fill-color: rgb(28,100,149);
     -webkit-text-stroke: 2px rgb(28,100,149);
     font-size: 50px;
-    font-family: JLH;
     margin-left: 30px;
     height: 224px;
     line-height: 224px;

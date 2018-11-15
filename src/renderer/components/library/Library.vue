@@ -1,74 +1,70 @@
 <template>
-  <div>
-    <div class="library">
-      <!--header-->
-      <div class="header">
+  <div class="library">
+    <!--header-->
+    <div class="header">
         <span class="header-name">我的图书馆</span>
-        <input class="header-input">
-        <span class="header-search"></span>
       </div>
-      <!--content-->
-      <div class="content">
-        <!--left-->
-        <div class="left">
-          <div class="left-header">
-            <div class="header-img" @click="handleLogin">
-              <img src="../../../renderer/assets/img/head.png" width="79" height="76">
-            </div>
-            <div class="header-name">XXX,欢迎您！</div>
+    <!--content-->
+    <div class="content">
+      <!--left-->
+      <div class="left">
+        <div class="left-header">
+          <div class="header-img" @click="handleLogin">
+            <img src="../../../renderer/assets/img/head.png" width="79" height="76">
           </div>
-            <div  class="left-current" :class="{'isActive': on}" @click="currentShow">当前借阅</div>
-            <div  class="left-local"  :class="{'isActive': close}"  @click="localShow">历史借阅</div>
+          <div class="header-name">XXX,欢迎您！</div>
         </div>
-        <!--right-->
-        <div class="right" v-show="showLocal">
+          <div  class="left-current" :class="{'isActive': on}" @click="currentShow">当前借阅</div>
+          <div  class="left-local"  :class="{'isActive': close}"  @click="localShow">历史借阅</div>
+      </div>
+      <!--right-->
+      <div class="right" v-show="showLocal">
+        <div class="right-header border-bottom" >
+          <span class="header-signal"></span>
+          <span class="header-content">历史借阅</span>
+        </div>
+        <div class="right-content">
+          <ul>
+            <li class="border-bottom"  v-for="(item,index) of local" :key="index">
+            <div class="right-li">
+              <span>{{index+1}}.</span>
+              <span class="book-name"> {{item.tsmc}}</span>
+            </div>
+            </li>
+          </ul>
+        </div>
+        <div class="right-footer"></div>
+      </div>
+      <div class="right" v-show="showCurrent">
+        <div class="current">
           <div class="right-header border-bottom" >
             <span class="header-signal"></span>
-            <span class="header-content">历史借阅</span>
+            <span class="header-content">当前借阅</span>
           </div>
-          <div class="right-content">
+          <div class="current-title border-bottom">
+            <span class="title-num">条码号</span>
+            <span class="title-name">书名</span>
+            <span class="title-or">责任者</span>
+            <span class="rentd">借阅日期</span>
+            <span class="backd">应还日期</span>
+          </div>
+          <div class="current-content">
             <ul>
-              <li class="border-bottom"  v-for="(item,index) of local" :key="index">
-              <div class="right-li">
-                <span>{{index+1}}.</span>
-                <span class="book-name"> {{item.tsmc}}</span>
-              </div>
+              <li class="border-bottom" v-for="item of current">
+                <span class="content-num">{{item.tstxm}}</span>
+                <span class="content-name">《{{item.tm}}》</span>
+                <span class="content-or">{{item.dyzz}}</span>
+                <span class="content-rentd">{{item.rdrq}}</span>
+                <span class="content-backd">{{item.rdrq}}</span>
               </li>
             </ul>
           </div>
-          <div class="right-footer"></div>
         </div>
-        <div class="right" v-show="showCurrent">
-          <div class="current">
-            <div class="right-header border-bottom" >
-              <span class="header-signal"></span>
-              <span class="header-content">当前借阅</span>
-            </div>
-            <div class="current-title border-bottom">
-              <span class="title-num">条码号</span>
-              <span class="title-name">书名</span>
-              <span class="title-or">责任者</span>
-              <span class="rentd">借阅日期</span>
-              <span class="backd">应还日期</span>
-            </div>
-            <div class="current-content">
-              <ul>
-                <li class="border-bottom" v-for="item of current">
-                  <span class="content-num">{{item.tstxm}}</span>
-                  <span class="content-name">《{{item.tm}}》</span>
-                  <span class="content-or">{{item.dyzz}}</span>
-                  <span class="content-rentd">{{item.rdrq}}</span>
-                  <span class="content-backd">{{item.rdrq}}</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="right-footer"></div>
-        </div>
-        <!--footer-->
-        <div class="footer ">
-          <router-link to="/">返回</router-link>
-        </div>
+        <div class="right-footer"></div>
+      </div>
+      <!--footer-->
+      <div class="footer ">
+        <router-link to="/">返回</router-link>
       </div>
     </div>
     <router-view></router-view>
@@ -107,13 +103,14 @@ export default {
     }
   },
   created () {
-    axios.get('/static/mock/local.json').then((res) => {
+    axios.get('/static/mock/library/local.json').then((res) => {
       const data =res.data
       if (data){
         this.local=data.local
       }
     }),
-   axios.get('/static/mock/current.json').then((ret) => {
+
+   axios.get('/static/mock/library/current.json').then((ret) => {
      const data = ret.data
      if (data) {
        this.current = data.current
@@ -126,47 +123,25 @@ export default {
 
 <style scoped>
   .library{
-    position:relative;
-    width: 1280px;
-    height: 100%;
+    position: relative;
+    width: 100%;
     font-family: 'SIMHEI';
   }
   .header{
-    position: relative;
     height:160px;
     background: rgb(24,109,146);
     padding: 8px 46px 8px 50px;
   }
   .header-name{
-    float: left;
     font-size:50px;
     color: #ffffff;
-  }
-  .header-input{
-    position: absolute;
-    width:400px;
-    height: 47px;
-    border-radius: 15px;
-    background: #fff;
-    vertical-align: top;
-    margin-left: 443px;
-  }
-  .header-search{
-    display: inline-block;
-    float: right;
-    width: 44px;
-    height: 46px;
-    margin-right: 38px;
-    color: #fff;
-    background:url("../../../renderer/assets/img/search.png") no-repeat;
-    background-size: 44px 46px;
   }
   .content{
     position: absolute;
     z-index: 100;
     left: 50px;
     top: 62px;
-    width: 1184px;
+    width: 100%;
     height: 888px;
     background: #ffffff;
     border-top: 1px solid black;
@@ -178,9 +153,6 @@ export default {
     height: 816px;
     margin-left: 25px;
     margin-top: 4px;
-  }
-  left-header{
-    position: relative;
   }
   .header-img{
     width: 79px;
@@ -200,11 +172,12 @@ export default {
     display: inline-block;
     font-size: 25px;
     color:rgb(24,109,146);
-     height:38px ;
-     line-height: 38px;
-     margin-left: 3px;
-     margin-top: 31px;
-     cursor: pointer;
+    height:38px ;
+    line-height: 38px;
+    margin-left: 3px;
+    margin-top: 40px;
+    cursor: pointer;
+
   }
   .isActive{
     display: inline-block;
@@ -224,13 +197,13 @@ export default {
     cursor: pointer;
   }
   .footer{
-    position: relative;
-    display: block;
     font-size: 50px;
+    width: 100%;
     height: 72px;
     line-height: 72px;
     background: rgb(24,109,146);
     text-align: center;
+    margin-top: -3px;
   }
   .footer a{
     color: #fff;
@@ -239,7 +212,8 @@ export default {
   }
   .right{
     position: relative;
-    width: 1054px;
+    float: left;
+    width: 100%;
     height: 816px;
     margin-left: 128px;
     margin-top: -820px;
@@ -247,7 +221,6 @@ export default {
   }
   .right-header{
     position: relative;
-    width: 100%;
     height: 55px;
     line-height: 55px;
     left: 0px;
@@ -268,10 +241,6 @@ export default {
     font-size: 16px;
     color: rgb(161,161,156);
     left:28px
-  }
-  .right-content{
-    position: relative;
-    list-style: number;
   }
   .right-content li{
     width: 100%;

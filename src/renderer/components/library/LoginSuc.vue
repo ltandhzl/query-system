@@ -4,8 +4,6 @@
       <!--header-->
       <div class="header">
         <span class="header-name">我的图书馆</span>
-        <input class="header-input">
-        <span class="header-search"></span>
       </div>
       <!--content-->
       <div class="content">
@@ -108,19 +106,19 @@ export default {
     }
   },
   created () {
-    axios.get('/static/mock/local.json').then((res) => {
+    axios.get('/static/mock/library/local.json').then((res) => {
       const data =res.data
       if (data){
         this.local=data.local
       }
     }),
-      axios.get('/static/mock/current.json').then((res) => {
+      axios.get('/static/mock/library/current.json').then((res) => {
         const data = res.data
         if (data) {
           this.current = data.current
         }
       }),
-      axios.get('/static/mock/loginSuc.json').then((res) => {
+      axios.get('/static/mock/library/loginSuc.json').then((res) => {
         const data = res.data
         if(data){
           this.loginSuc=data.loginSuc
@@ -132,48 +130,25 @@ export default {
 
 <style scoped>
   .library{
-    position:relative;
-    width: 1280px;
-    height: 100%;
+    position: relative;
+    width: 100%;
     font-family: 'SIMHEI';
   }
   .header{
-    position: relative;
     height:160px;
     background: rgb(24,109,146);
     padding: 8px 46px 8px 50px;
   }
   .header-name{
-    float: left;
     font-size:50px;
-    font-family: JLH;
     color: #ffffff;
-  }
-  .header-input{
-    position: absolute;
-    width:400px;
-    height: 47px;
-    border-radius: 15px;
-    background: #fff;
-    vertical-align: top;
-    margin-left: 443px;
-  }
-  .header-search{
-    display: inline-block;
-    float: right;
-    width: 44px;
-    height: 46px;
-    margin-right: 38px;
-    color: #fff;
-    background:url("../../../renderer/assets/img/search.png") no-repeat;
-    background-size: 44px 46px;
   }
   .content{
     position: absolute;
     z-index: 100;
     left: 50px;
     top: 62px;
-    width: 1184px;
+    width: 100%;
     height: 888px;
     background: #ffffff;
     border-top: 1px solid black;
@@ -185,9 +160,6 @@ export default {
     height: 816px;
     margin-left: 25px;
     margin-top: 4px;
-  }
-  left-header{
-    position: relative;
   }
   .header-img{
     width: 79px;
@@ -203,14 +175,15 @@ export default {
     margin-left: 4px;
     margin-top: 2px;
   }
-  .left-current{
+
+   .left-current{
     display: inline-block;
     font-size: 25px;
     color:rgb(24,109,146);
     height:38px ;
     line-height: 38px;
     margin-left: 3px;
-    margin-top: 31px;
+     margin-top: 40px;
     cursor: pointer;
   }
   .isActive{
@@ -231,13 +204,13 @@ export default {
     cursor: pointer;
   }
   .footer{
-    position: relative;
-    display: block;
     font-size: 50px;
+    width: 100%;
     height: 72px;
     line-height: 72px;
     background: rgb(24,109,146);
     text-align: center;
+    margin-top: -3px;
   }
   .footer a{
     color: #fff;
@@ -246,7 +219,8 @@ export default {
   }
   .right{
     position: relative;
-    width: 1054px;
+    float: left;
+    width: 100%;
     height: 816px;
     margin-left: 128px;
     margin-top: -820px;
@@ -254,7 +228,6 @@ export default {
   }
   .right-header{
     position: relative;
-    width: 100%;
     height: 55px;
     line-height: 55px;
     left: 0px;
@@ -275,10 +248,6 @@ export default {
     font-size: 16px;
     color: rgb(161,161,156);
     left:28px
-  }
-  .right-content{
-    position: relative;
-    list-style: number;
   }
   .right-content li{
     width: 100%;

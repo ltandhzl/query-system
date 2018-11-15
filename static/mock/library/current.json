@@ -1,0 +1,76 @@
+{
+  "code": 200,
+  "msg": "查询成功",
+  "current": [
+    {
+      "userInfo": {
+        "ssh": null,
+        "dzxm": "许晨",
+        "sfrzh": "16009062",
+        "yhrq": "2018-11-06        ",
+        "dztm": "16009062",
+        "tstm": "01055697",
+        "jsrq": "2018-09-0716:32:56",
+        "clrq": "2018-10-27 20:05:09",
+        "tsmc": "Spring实战",
+        "xjbs": "1",
+        "xjrq": "2018-09-2518:44:34"
+      },
+      "wxlx": "中文图书                                                                                        ",
+      "isbn": "978-7-115-31606-6",
+      "ssh": "TP312/1381",
+      "gcdm": "00019",
+      "tm": "Spring实战",
+      "gcdmc": null,
+      "cbrq": "2013.06",
+      "rdrq": "2016-03-31",
+      "flh": "T",
+      "jg": "59",
+      "djh": "1055697",
+      "cbsmc": "人民邮电出版社",
+      "tsztdm": "41",
+      "dyzz": "(美)Craig Walls著",
+      "tstxm": "01055697",
+      "wid": "79359C71818F54CAE053D95C2DD2BB55"
+    },
+    {
+      "userInfo": null,
+      "wxlx": "中文图书                                                                                        ",
+      "isbn": "978-7-115-31606-6",
+      "ssh": "TP312/1381",
+      "gcdm": "00019",
+      "tm": "Spring实战",
+      "gcdmc": null,
+      "cbrq": "2013.06",
+      "rdrq": "2016-03-31",
+      "flh": "T",
+      "jg": "59",
+      "djh": "1055699",
+      "cbsmc": "人民邮电出版社",
+      "tsztdm": "41",
+      "dyzz": "(美)Craig Walls著",
+      "tstxm": "01055699",
+      "wid": "79359C71818E54CAE053D95C2DD2BB55"
+    },
+    {
+      "userInfo": null,
+      "wxlx": "中文图书                                                                                        ",
+      "isbn": "978-7-115-31606-6",
+      "ssh": "TP312/1381",
+      "gcdm": "00033",
+      "tm": "Spring实战",
+      "gcdmc": null,
+      "cbrq": "2013.06",
+      "rdrq": "2016-03-31",
+      "flh": "T",
+      "jg": "59",
+      "djh": "1055698",
+      "cbsmc": "人民邮电出版社",
+      "tsztdm": "42",
+      "dyzz": "(美)Craig Walls著",
+      "tstxm": "01055698",
+      "wid": "79359C71818D54CAE053D95C2DD2BB55"
+    }
+  ]
+}
+

@@ -4,6 +4,7 @@ import Card from '../components/card/card'
 import Index from '../components/index/index'
 import LoginCard from '../components/login-card/login-card'
 import LoginClass from '../components/login-class/login-class'
+import Class from '../components/class/class'
 import Library from '../components/library/Library'
 import LoginLibrary from '../components/library/pages/login-library'
 import LoginSuc from '../components/library/LoginSuc'
@@ -12,6 +13,7 @@ import LibraryHotRecommend from '../components/library/components/library-hot-re
 import LibraryCategoryOne from '../components/library/components/library-category-one'
 import LibraryContent from '../components/library/components/library-content'
 import LibraryFindBook from '../components/library/components/library-find-book'
+
 Vue.use(Router);
 
 export default new Router({
@@ -37,6 +39,12 @@ export default new Router({
       component: LoginClass
     },
     {
+
+      path: '/class',
+      name: 'Class',
+      component: Class
+    },
+    {
       path: '/library',
       name: 'Library',
       component: Library
@@ -50,6 +58,7 @@ export default new Router({
       path: '/login-suc',
       name: 'LoginSuc',
       component: LoginSuc
+
     },
     {
       path:'/library-index',
@@ -76,7 +85,6 @@ export default new Router({
         keepAlive:true
       }
     },
-
     {
       path:'/library-content',
       component:LibraryContent,
@@ -93,9 +101,5 @@ export default new Router({
         keepAlive:false
       }
     }
-
-
-
-
-  ]
+    ]
 })
