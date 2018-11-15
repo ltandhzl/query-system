@@ -73,7 +73,6 @@
   </div>
 </template>
 <script>
-  const http='http://222.195.120.110:8080/select';
   let data={
         "A":{
           "title":"马克思主义、毛泽东思想、邓小平理论"
@@ -162,7 +161,7 @@
       let _this=this;
       $.ajax({
         type: "GET",
-        url:`${http}/library/categoryRanking/${this.flh}/${this.page}`,
+        url:`${_this.GLOBAL.URL}/library/categoryRanking/${this.flh}/${this.page}`,
         dataType: "jsonp",
         async: true,
         jsonp: "callback",
@@ -193,7 +192,7 @@
         this.flh=flh;
         $.ajax({
           type: "GET",
-          url:`${http}/library/categoryRanking/${this.flh}/${this.page}`,
+          url:`${_this.GLOBAL.URL}/library/categoryRanking/${this.flh}/${this.page}`,
           dataType: "jsonp",
           async: true,
           jsonp: "callback",
@@ -229,7 +228,7 @@
           let _this=this;
           $.ajax({
             type: "GET",
-            url:`${http}/library/categoryRanking/${this.flh}/${this.page}`,
+            url:`${_this.GLOBAL.URL}/library/categoryRanking/${this.flh}/${this.page}`,
             dataType: "jsonp",
             async: true,
             jsonp: "callback",

@@ -135,7 +135,6 @@
 </template>
 <script>
   import BScroll from 'better-scroll'
-  const http='http://222.195.120.110:8080/select';
 
   export default {
     data(){
@@ -180,7 +179,7 @@
       let _this=this;
       $.ajax({
         type: "POST",
-        url:`${http}/library/findBookBySSH?SSH=${this.ssh}`,
+        url:`${_this.GLOBAL.URL}/library/findBookBySSH?SSH=${this.ssh}`,
         dataType: "jsonp",
         async: true,
         jsonp: "callback",
@@ -211,7 +210,7 @@
       });
       $.ajax({
         type: "GET",
-        url:`${http}/library/findBookStatus?SSH=${this.ssh}`,
+        url:`${_this.GLOBAL.URL}/library/findBookStatus?SSH=${this.ssh}`,
         dataType: "jsonp",
         async: true,
         jsonp: "callback",

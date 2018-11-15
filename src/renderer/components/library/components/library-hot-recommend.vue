@@ -64,7 +64,6 @@
     </div>
 </template>
 <script>
-  const http='http://222.195.120.110:8080/select';
 
   export default {
     data(){
@@ -81,7 +80,7 @@
       let _this=this;
       $.ajax({
         type: "GET",
-        url:`${http}/library/topRanking/${this.page}`,
+        url:`${_this.GLOBAL.URL}/library/topRanking/${this.page}`,
         dataType: "jsonp",
         async: true,
         jsonp: "callback",
@@ -118,7 +117,7 @@
 
         $.ajax({
           type: "GET",
-          url:`${http}/library/topRanking/${this.page}`,
+          url:`${_this.GLOBAL.URL}/library/topRanking/${this.page}`,
           dataType: "jsonp",
           async: true,
           jsonp: "callback",

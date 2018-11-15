@@ -98,7 +98,6 @@
   </div>
 </template>
 <script>
-  const http='http://222.195.120.110:8080/select';
   export default {
     data(){
       return{
@@ -118,7 +117,7 @@
       let _this=this;
       $.ajax({
         type: "GET",
-        url:`${http}/library/findBookByName/${this.tm}/${this.page}`,
+        url:`${_this.GLOBAL.URL}/library/findBookByName/${this.tm}/${this.page}`,
         dataType: "jsonp",
         async: true,
         jsonp: "callback",
@@ -156,7 +155,7 @@
         this.currentIndex=page;
         $.ajax({
           type: "GET",
-          url:`${http}/library/findBookByName/${this.tm}/${this.page}`,
+          url:`${_this.GLOBAL.URL}/library/findBookByName/${this.tm}/${this.page}`,
           dataType: "jsonp",
           async: true,
           jsonp: "callback",
@@ -194,7 +193,7 @@
         this.bookArr=[];
         $.ajax({
           type: "GET",
-          url:`${http}/library/findBookByName/${this.tm}/${this.page}`,
+          url:`${_this.GLOBAL.URL}/library/findBookByName/${this.tm}/${this.page}`,
           dataType: "jsonp",
           async: true,
           jsonp: "callback",
