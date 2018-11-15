@@ -7,6 +7,11 @@ import LoginClass from '../components/login-class/login-class'
 import Library from '../components/library/Library'
 import LoginLibrary from '../components/library/pages/login-library'
 import LoginSuc from '../components/library/LoginSuc'
+import LibraryIndex from '../components/library/components/library-index'
+import LibraryHotRecommend from '../components/library/components/library-hot-recommend'
+import LibraryCategoryOne from '../components/library/components/library-category-one'
+import LibraryContent from '../components/library/components/library-content'
+import LibraryFindBook from '../components/library/components/library-find-book'
 Vue.use(Router);
 
 export default new Router({
@@ -45,6 +50,52 @@ export default new Router({
       path: '/login-suc',
       name: 'LoginSuc',
       component: LoginSuc
+    },
+    {
+      path:'/library-index',
+      redirect:'/library-hot-recommend/1',
+      name:'index',
+      component:LibraryIndex,
+      children:[
+        {
+          path:'/library-category-one/:page/:flh',
+          component:LibraryCategoryOne,
+          meta:{
+            keepAlive:true
+          }
+        },
+        {
+          path:'/library-hot-recommend/:page',
+          component:LibraryHotRecommend,
+          meta:{
+            keepAlive:true
+          }
+        }
+      ],
+      meta:{
+        keepAlive:true
+      }
+    },
+
+    {
+      path:'/library-content',
+      component:LibraryContent,
+      name:'content',
+      meta:{
+        keepAlive:false
+      }
+    },
+    {
+      path:'/library-find-book',
+      name:'book',
+      component:LibraryFindBook,
+      meta:{
+        keepAlive:false
+      }
     }
+
+
+
+
   ]
 })
